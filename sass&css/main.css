@@ -1,0 +1,113 @@
+@import url(//fonts.googleapis.com/earlyaccess/nicomoji.css);
+html {
+  font-family: "Nico Moji";
+}
+
+.header-box {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  top: 0;
+  height: 133px;
+  width: 100%;
+  border-bottom: 3px solid #888888;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  background: #FFFFFF;
+  z-index: 3;
+}
+.header-box_title {
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  font-size: 24px;
+  font-family: "Nico Moji";
+}
+.header-box_doc {
+  margin-left: 16%;
+}
+.header-box_basket {
+  margin-left: 1200px;
+}
+.header-box_spot {
+  margin-left: 5%;
+}
+.header-box_vk {
+  margin-left: 73%;
+}
+
+.main-section {
+  position: relative;
+  width: 1620px;
+  height: 1600px;
+  margin: 133px auto 0 auto;
+}
+
+.button-setting {
+  border: none;
+  background: #FFFFFF;
+  cursor: pointer;
+  padding: 0;
+}
+
+.footer-main {
+  display: flex;
+  align-items: center;
+  height: 104px;
+  border-top: 1px solid #000000;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  z-index: 4;
+}
+
+.product-box {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  top: 162px;
+  width: 100%;
+}
+
+.card-item {
+  position: relative;
+  height: 580px;
+  width: 400px;
+  margin-bottom: 187px;
+}
+.card-item_title {
+  width: 220px;
+  font-size: 24px;
+  text-align: center;
+  margin: 0 auto;
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  color: #3A3C44;
+}
+.card-item_button-more {
+  position: absolute;
+  height: 44px;
+  font-size: 24px;
+  mix-blend-mode: multiply;
+  border: 1px solid #34363F;
+  padding: 0 5px 0 5px;
+  color: #3A3C44;
+  bottom: 40px;
+  left: 24px;
+}
+.card-item_button-buy {
+  position: absolute;
+  height: 44px;
+  font-size: 24px;
+  mix-blend-mode: multiply;
+  border: 1px solid #34363F;
+  padding: 0 25px 0 25px;
+  color: #3A3C44;
+  bottom: 40px;
+  left: 220px;
+}
+
+.margin-card {
+  margin-right: 210px;
+}
+
+.margin-card-2 {
+  margin-bottom: 10px;
+}/*# sourceMappingURL=main.css.map */

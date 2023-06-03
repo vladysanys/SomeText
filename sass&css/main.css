@@ -22,6 +22,8 @@ html {
   -webkit-text-stroke: 1.5px #FFFFFF;
   font-size: 24px;
   font-family: "Nico Moji";
+  text-decoration: none;
+  color: black;
 }
 .header-box_doc {
   margin-left: 16%;
@@ -110,4 +112,27 @@ html {
 
 .margin-card-2 {
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1600px) {
+  .header-box_basket {
+    margin-left: 1000px;
+  }
+  .header-box_vk {
+    margin-left: 70%;
+  }
+  .card-item {
+    width: 300px;
+  }
+  .main-section {
+    width: 1400px;
+  }
+  .product-box {
+    width: 92%;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  .margin-card {
+    margin-right: 150px;
+  }
 }/*# sourceMappingURL=main.css.map */

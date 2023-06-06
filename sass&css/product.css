@@ -1,3 +1,12 @@
+@import url(//fonts.googleapis.com/earlyaccess/nicomoji.css);
+html {
+  font-family: "Nico Moji";
+}
+
+* {
+  font-family: "Nico Moji";
+}
+
 .product-section {
   display: flex;
   justify-content: center;
@@ -19,6 +28,7 @@
   width: 704px;
   height: 693px;
   margin-left: 260px;
+  margin-bottom: 100px;
 }
 .carousel-box_main-img {
   position: absolute;
@@ -51,4 +61,90 @@
   transform: translateX(-50%);
   left: 50%;
   bottom: 0px;
+}
+
+.cost-box {
+  position: absolute;
+  top: 169px;
+  left: 1213px;
+  width: 300px;
+  height: 245px;
+}
+.cost-box_name {
+  font-size: 28px;
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  color: #3A3C44;
+  margin-bottom: 16px;
+}
+.cost-box_cost-text {
+  font-size: 28px;
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  color: #3A3C44;
+  margin-bottom: 16px;
+}
+.cost-box_size-l {
+  margin-left: 5px;
+  margin-bottom: 50px;
+}
+.cost-box_button-basket {
+  border: 1px solid #000000;
+  padding: 4px 3px 4px 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: 400;
+  margin-left: 5px;
+  font-size: 24px;
+}
+
+.size {
+  color: #3A3C44;
+  font-family: "Nico Moji";
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  width: 48px;
+  height: 48px;
+  font-size: 24px;
+  text-decoration: none;
+  border-radius: 0px;
+  border: 1px solid #000000;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+
+.size_anim {
+  background: #000000;
+  color: #000000;
+}
+
+.about-box {
+  position: relative;
+  text-align: center;
+  width: 1200px;
+  height: 390px;
+  transform: translate(-50%, 0);
+  left: 50%;
+}
+.about-box_title {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 36px;
+  margin-bottom: 30px;
+}
+.about-box_text-contayner {
+  position: relative;
+  width: 100%;
+  height: 323px;
+}
+.about-box_text-contayner_hr {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  margin: 0;
+}
+.about-box_text-contayner_hr-2 {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.about-box_text-contayner_text {
+  margin: 0 auto;
+  width: 850px;
+  margin-top: 65px;
+  height: 250px;
+  text-align: center;
+  font-size: 27px;
+  font-family: "Nico Moji";
 }/*# sourceMappingURL=product.css.map */

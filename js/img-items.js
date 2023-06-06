@@ -22,6 +22,9 @@ const imgItems = [
   {
     mainImg: "../img/stih-TEE.png",
     miniImg: ["../img/stih-TEE.png", "../img/carousel-img-2_1.png"],
+    name: "STIH TEE",
+    cost: "6666",
+    about: "Полностью разборная толстовка серого цвета конструкция из 12 молний с логотипами двух брендов DE4444TH и DRIPPIN' WEAR WORLD пряжа Futer 3, плотность 330 г/м² Уникальные запатентованные узоры Конструкция с капюшоном, закрывающим шею"
   }
 ];
 export default imgItems

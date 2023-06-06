@@ -1,3 +1,9 @@
+@import url(//fonts.googleapis.com/earlyaccess/nicomoji.css)
+$main-font:'Nico Moji'
+html
+  font-family: 'Nico Moji'
+*
+  font-family: 'Nico Moji'
 .product-section
   display: flex
   justify-content: center
@@ -17,6 +23,7 @@
   height: 693px
   // border: 1px solid red
   margin-left: 260px
+  margin-bottom: 100px
   &_main-img
     position: absolute
     transform: translateX(-50%)
@@ -41,3 +48,74 @@
   transform: translateX(-50%)
   left: 50%
   bottom: 0px
+.cost-box
+  position: absolute
+  top: 169px
+  left: 1213px
+  width: 300px
+  height: 245px
+  // border: 1px solid #000000
+  &_name
+    font-size: 28px
+    -webkit-text-stroke: 1.5px #FFFFFF
+    color: #3A3C44
+    margin-bottom: 16px
+  &_cost-text
+    font-size: 28px
+    -webkit-text-stroke: 1.5px #FFFFFF
+    color: #3A3C44
+    margin-bottom: 16px
+  &_size-l
+    margin-left: 5px
+    margin-bottom: 50px
+  &_button-basket
+    border: 1px solid #000000
+    padding: 4px 3px 4px 3px
+    font-family: Arial, Helvetica, sans-serif
+    font-weight: 400
+    margin-left: 5px
+    font-size: 24px
+.size
+  color: #3A3C44
+  font-family: $main-font
+  -webkit-text-stroke: 1.5px #FFFFFF
+  width: 48px
+  height: 48px
+  font-size: 24px
+  text-decoration: none
+  border-radius: 0px
+  border: 1px solid #000000
+  background: #FFFFFF
+  cursor: pointer
+.size_anim
+  background: #000000
+  color: #000000
+.about-box
+  position: relative
+  text-align: center
+  width: 1200px
+  height: 390px
+  // border: 1px solid #000000
+  transform: translate(-50%,0)
+  left: 50%
+  &_title
+    font-family: Arial, Helvetica, sans-serif
+    font-size: 36px
+    margin-bottom: 30px
+  &_text-contayner
+    position: relative
+    width: 100%
+    height: 323px
+    &_hr
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+      margin: 0
+    &_hr-2
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25)
+    &_text
+      margin: 0 auto
+      width: 850px
+      margin-top: 65px
+      height: 250px
+      text-align: center
+      font-size: 27px
+      font-family: $main-font

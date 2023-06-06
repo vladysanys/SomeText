@@ -3,6 +3,10 @@ html {
   font-family: "Nico Moji";
 }
 
+* {
+  font-family: "Nico Moji";
+}
+
 .header-box {
   position: fixed;
   display: flex;

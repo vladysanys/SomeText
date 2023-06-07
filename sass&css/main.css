@@ -1,10 +1,10 @@
 @import url(//fonts.googleapis.com/earlyaccess/nicomoji.css);
 html {
-  font-family: "Nico Moji";
+  font-family: "Nico Moji", Arial, Helvetica, sans-serif;
 }
 
 * {
-  font-family: "Nico Moji";
+  font-family: "Nico Moji", Arial, Helvetica, sans-serif;
 }
 
 .header-box {
@@ -123,12 +123,98 @@ html {
   display: flex;
   width: 100%;
   height: 450px;
-  background: red;
-  z-index: 4;
-  display: none;
+  background: #FFFFFF;
+  z-index: 6;
+  top: -450px;
+  transition: 0.2s;
 }
 .burger-box_icon {
   background: none;
+}
+.burger-box_icon-cross {
+  margin-left: 5%;
+}
+
+.buttons-box {
+  position: absolute;
+  display: flex;
+  top: 200px;
+  transform: translate(-50%, 0);
+  left: 50%;
+  z-index: 5;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.item-button {
+  font-size: 24px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.burger-box_anim {
+  top: -158px;
+}
+
+.background {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  background: rgba(17, 12, 31, 0.2);
+  visibility: hidden;
+}
+
+.background-basket {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  visibility: hidden;
+  background: rgba(17, 12, 31, 0.2);
+}
+
+.basket-box {
+  position: fixed;
+  width: 637px;
+  height: 100%;
+  background: #FFFFFF;
+  right: -637px;
+  top: 0;
+  z-index: 6;
+  transition: 0.2s;
+}
+.basket-box_name {
+  text-align: end;
+  font-size: 20px;
+  -webkit-text-stroke: 1.5px #FFFFFF;
+  margin: 20px 10px 39px 0;
+}
+.basket-box_text {
+  font-size: 24px;
+  margin: 0 0 100px 20px;
+}
+.basket-box_err {
+  width: 500px;
+  font-size: 24px;
+  margin-left: 68px;
+  text-align: center;
+}
+.basket-box_button {
+  position: absolute;
+  font-size: 26px;
+  width: 395px;
+  border: 1px solid #000000;
+  padding: 42px 72.5px;
+  transform: translate(-50%, 0);
+  left: 50%;
+  top: 500px;
+}
+
+.basket-box_anim {
+  right: 0;
 }
 
 @media screen and (max-width: 1600px) {

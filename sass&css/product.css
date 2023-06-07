@@ -1,10 +1,10 @@
 @import url(//fonts.googleapis.com/earlyaccess/nicomoji.css);
 html {
-  font-family: "Nico Moji";
+  font-family: "Nico Moji", Arial, Helvetica, sans-serif;
 }
 
 * {
-  font-family: "Nico Moji";
+  font-family: "Nico Moji", Arial, Helvetica, sans-serif;
 }
 
 .product-section {
@@ -86,8 +86,12 @@ html {
   margin-bottom: 50px;
 }
 .cost-box_button-basket {
+  position: absolute;
+  top: 215px;
+  left: 2px;
+  width: 283px;
   border: 1px solid #000000;
-  padding: 4px 3px 4px 3px;
+  padding: 4px 4px 4px 3px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 400;
   margin-left: 5px;
@@ -145,7 +149,7 @@ html {
   height: 250px;
   text-align: center;
   font-size: 27px;
-  font-family: "Nico Moji";
+  font-family: "Nico Moji", Arial, Helvetica, sans-serif;
 }
 
 .more-box {

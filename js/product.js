@@ -8,22 +8,26 @@ const sizes = document.querySelectorAll(".size");
 const buttonSizeL = document.querySelector(".cost-box_size-l");
 const buttonSizeXl = document.querySelector(".cost-box_size-xl");
 const aboutText = document.querySelector(".about-box_text-contayner_text");
-const moreButtons = document.querySelectorAll(".card-item_button-more")
+const moreButtons = document.querySelectorAll(".card-item_button-more");
 const cardsItems = document
   .querySelector(".more-box")
   .querySelectorAll(".card-item");
 let switchValue = 0;
+localStorage.setItem("numOnBasket", false);
+localStorage.setItem("soket", "");
 let idImg = 0;
-let numId = 0;
-let numCard = [1]
+let numsProduct = [];
 let sizeL = false;
 let sizeXL = false;
 let num = localStorage.getItem("numPage");
-cardsItems.forEach((item,i) => {
-  console.log(imgItems[num].nums[i])
-  item.querySelector("img").setAttribute("src", imgItems[imgItems[num].nums[i]].mainImg);
-  item.querySelector(".card-item_title").textContent = imgItems[imgItems[num].nums[i]].name
-  moreButtons[i].id = imgItems[num].nums[i]
+cardsItems.forEach((item, i) => {
+  console.log(imgItems[num].nums[i]);
+  item
+    .querySelector("img")
+    .setAttribute("src", imgItems[imgItems[num].nums[i]].mainImg);
+  item.querySelector(".card-item_title").textContent =
+    imgItems[imgItems[num].nums[i]].name;
+  moreButtons[i].id = imgItems[num].nums[i];
 });
 mainImg.setAttribute("src", imgItems[num].miniImg[switchValue]);
 costName.textContent = imgItems[num].name;
@@ -75,17 +79,85 @@ buttonSizeL.onclick = () => {
   const button = document.querySelector(".size_anim");
   if (button) {
     sizeL = true;
+    sizeXL = false;
+    checkBasket = true;
   } else {
     sizeL = false;
+    sizeXL = false;
+    checkBasket = false;
+    document.querySelector(".cost-box_button-basket").textContent =
+      "ДОБАВИТЬ В КОРЗИНУ";
+    localStorage.setItem("numOnBasket", false);
+    numsProduct = [];
+    let arr = localStorage.getItem("numsProduct");
+    let filteredArr = arr.split(",");
+    filteredArr.pop();
+    console.log(filteredArr);
+    localStorage.setItem("numsProduct", filteredArr);
   }
 };
+let checkBasket = true;
 buttonSizeXl.onclick = () => {
   buttonSizeXl.classList.toggle("size_anim");
   buttonSizeL.classList.remove("size_anim");
   const button = document.querySelector(".size_anim");
   if (button) {
     sizeXL = true;
+    sizeL = false;
+    checkBasket = true;
   } else {
     sizeXL = false;
+    sizeL = false;
+    checkBasket = false;
+    document.querySelector(".cost-box_button-basket").textContent =
+      "ДОБАВИТЬ В КОРЗИНУ";
+    localStorage.setItem("numOnBasket", false);
+    numsProduct = [];
+    let arr = localStorage.getItem("numsProduct");
+    let filteredArr = arr.split(",");
+    filteredArr.pop();
+    console.log(filteredArr);
+    localStorage.setItem("numsProduct", filteredArr);
   }
 };
+document.querySelector(".cost-box_button-basket").onclick = () => {
+  if ((sizeL && checkBasket) || (sizeXL && checkBasket)) {
+    document.querySelector(".cost-box_button-basket").textContent = "ДОБАВЛЕНО";
+    checkBasket = !checkBasket;
+    localStorage.setItem("numOnBasket", true);
+    numsProduct.push(num);
+    let arr = localStorage.getItem("numsProduct");
+    let soket = [...arr, ...numsProduct];
+    let filteredArr = [];
+    soket.forEach((item) => {
+      if (item != ",") {
+        filteredArr.push(item);
+      }
+    });
+    console.log(soket);
+    localStorage.setItem("numsProduct", filteredArr);
+  } else {
+    numsProduct = [];
+    let arr = localStorage.getItem("numsProduct");
+    let filteredArr = arr.split(",")
+    arr.split(",").forEach((item) => {
+      if (item == num) {
+        filteredArr = arr.split(",").splice(item,1);
+      }
+    });
+    console.log(filteredArr);
+    localStorage.setItem("numsProduct", filteredArr);
+    localStorage.setItem("numOnBasket", false);
+    document.querySelector(".cost-box_button-basket").textContent =
+      "ДОБАВИТЬ В КОРЗИНУ";
+    checkBasket = !checkBasket;
+  }
+};
+let checkItems = localStorage.getItem("numsProduct").split(",");
+console.log(checkItems);
+checkItems.forEach((item) => {
+  if (item == num) {
+    document.querySelector(".cost-box_button-basket").textContent = "ДОБАВЛЕНО";
+    checkBasket = !checkBasket;
+  }
+});

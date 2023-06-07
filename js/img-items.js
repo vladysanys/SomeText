@@ -56,5 +56,5 @@ const imgItems = [
     about: "оверзайз крой 100% хлопок пепельные стразы тираж: 1 шт.",
     nums: [2, 1, 0],
   },
-];
+];//72.5
 export default imgItems;

@@ -16,18 +16,57 @@
   </head>
   <body>
     <header class="header-box">
+      <div class="burger-box">
+        <button class="header-box_doc button-setting burger-box_icon">
+          <img src="../icons/document-icon.svg" alt="Документ" />
+        </button>
+        <button class="header-box_basket button-setting burger-box_icon basket-1">
+          <img src="../icons/basket-icon.svg" alt="Корзина" />
+        </button>
+        <button class="burger-box_icon-cross button-setting burger-box_icon">
+          <img src="../img/cross.svg" alt="" />
+        </button>
+        <div class="buttons-box">
+          <a class="item-button button-setting login" href="loginPage.html"
+            >ЛОГИН</a
+          >
+          <a class="item-button button-setting shop" href="../index.html"
+            >МАГАЗИН</a
+          >
+          <a
+            class="item-button button-setting delivery"
+            href="deliveryPage.html"
+            >ДОСТАВКА</a
+          >
+          <a
+            class="item-button button-setting contacts"
+            href="contactsPage.html"
+            >КОНТАКТЫ</a
+          >
+        </div>
+      </div>
       <button class="header-box_doc button-setting">
         <img src="../icons/document-icon.svg" alt="Документ" />
       </button>
       <a class="header-box_title button-setting" href="../index.html">
         <h1>SOME TEXT</h1>
       </a>
-      <button class="header-box_basket button-setting">
+      <button class="header-box_basket button-setting basket-2">
         <img src="../icons/basket-icon.svg" alt="Корзина" /></button
       ><button class="header-box_spot button-setting">
         <img src="../icons/spot-icon.svg" alt="Меню" />
       </button>
     </header>
+    <div class="basket-box">
+      <p class="basket-box_name">SOME TEXT</p>
+      <p class="basket-box_text">КОРЗИНА</p>
+      <p class="basket-box_err">
+        КОРЗИНА ПУСТАЯ. ДОБАВЬТЕ ХОТЯ БЫ ОДИН ТОВАР В КОРЗИНУ
+      </p>
+      <button class="basket-box_button button-setting">ОФОРМИТЬ ЗАКАЗ</button>
+    </div>
+    <div class="background"></div>
+    <div class="background-basket"></div>
     <section class="product-section">
       <div class="product-section_box">
         <div class="carousel-box">
@@ -92,16 +131,24 @@
       <button class="header-box_doc button-setting">
         <img src="../icons/document-icon.svg" alt="Документ" />
       </button>
-      <button class="header-box_title button-setting">
+      <a class="header-box_title button-setting" href="../index.html">
         <h1>SOME TEXT</h1>
-      </button>
-      <button class="header-box_vk button-setting">
-        <img src="../icons/vk-icon.png" alt="Вконтакте" /></button
-      ><button class="header-box_tg button-setting">
+      </a>
+      <a
+        class="header-box_vk button-setting"
+        href="https://vk.com/r0bert705010"
+      >
+        <img src="../icons/vk-icon.png" alt="Вконтакте" /></a
+      ><a
+        class="header-box_tg button-setting"
+        href="https://web.telegram.org/k/#1139534183"
+      >
         <img src="../icons/tg-icon.png" alt="Телеграм" />
-      </button>
+      </a>
     </footer>
     <script src="../js/product.js" type="module"></script>
     <script src="../js/checkIdProductPage.js" type="module"></script>
+    <script src="../js/basket.js" type="module"></script>
+    <script src="../js/burger.js"></script>
   </body>
 </html>

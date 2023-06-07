@@ -8,11 +8,23 @@ const sizes = document.querySelectorAll(".size");
 const buttonSizeL = document.querySelector(".cost-box_size-l");
 const buttonSizeXl = document.querySelector(".cost-box_size-xl");
 const aboutText = document.querySelector(".about-box_text-contayner_text");
+const moreButtons = document.querySelectorAll(".card-item_button-more")
+const cardsItems = document
+  .querySelector(".more-box")
+  .querySelectorAll(".card-item");
 let switchValue = 0;
 let idImg = 0;
+let numId = 0;
+let numCard = [1]
 let sizeL = false;
 let sizeXL = false;
 let num = localStorage.getItem("numPage");
+cardsItems.forEach((item,i) => {
+  console.log(imgItems[num].nums[i])
+  item.querySelector("img").setAttribute("src", imgItems[imgItems[num].nums[i]].mainImg);
+  item.querySelector(".card-item_title").textContent = imgItems[imgItems[num].nums[i]].name
+  moreButtons[i].id = imgItems[num].nums[i]
+});
 mainImg.setAttribute("src", imgItems[num].miniImg[switchValue]);
 costName.textContent = imgItems[num].name;
 costSum.textContent = imgItems[num].cost + ".rub";

@@ -107,10 +107,6 @@ document.addEventListener("click", (e) => {
     });
   }
 });
-function start() {
-  if (gen) {
-    localStorage.setItem("numsProduct", "");
-    gen = false
-  }
+if(localStorage.getItem("numsProduct") == undefined){
+  localStorage.setItem("numsProduct","")
 }
-start();

@@ -13,8 +13,7 @@ function createProduct(size, img, price, name) {
   const basketSize = document.createElement("p");
   basketItem.classList.add("basket-item");
   basketImg.classList.add("basket-item_img");
-  if(window.location.pathname == "/SomeText/index.html
-"){
+  if(window.location.pathname == "/SomeText/index.html"){
     let pathImg = img.split("").splice(3,img.split("").length-2)
     basketImg.setAttribute("src", pathImg.join(""));
   } else{

@@ -2,22 +2,33 @@ import imgItems from "./img-items.js";
 const basket = document.querySelector(".basket-1");
 const basketTwo = document.querySelector(".basket-2");
 const basketBox = document.querySelector(".basket-box");
+const deleteButton = document.querySelectorAll(".icon-delete");
 let check = false;
 let arr = [];
 let gen = true;
+let id = 0;
 function createProduct(size, img, price, name) {
   const basketItem = document.createElement("div");
   const basketImg = document.createElement("img");
   const basketName = document.createElement("p");
   const basketPrice = document.createElement("p");
   const basketSize = document.createElement("p");
+  const basketDeleteButton = document.createElement("button");
+  const iconDelete = document.createElement("img");
+  basketDeleteButton.classList.add("basket-item_button");
+  basketDeleteButton.classList.add("button-setting");
+  iconDelete.classList.add("icon-delete");
+  iconDelete.id = id;
+  basketDeleteButton.append(iconDelete);
   basketItem.classList.add("basket-item");
   basketImg.classList.add("basket-item_img");
-  if (window.location.pathname.slice(0,-11) == "/index.html") {
+  if (window.location.pathname == "SomeText/index.html") {
     let pathImg = img.split("").splice(3, img.split("").length - 2);
     basketImg.setAttribute("src", pathImg.join(""));
+    iconDelete.setAttribute("src", "icons/cross.svg");
   } else {
     basketImg.setAttribute("src", img);
+    iconDelete.setAttribute("src", "../icons/cross.svg");
   }
   basketName.classList.add("basket-item_name");
   basketName.textContent = name;
@@ -25,8 +36,15 @@ function createProduct(size, img, price, name) {
   basketPrice.textContent = price + ".rub";
   basketSize.classList.add("basket-item_size");
   basketSize.textContent = "size: " + size;
-  basketItem.append(basketImg, basketName, basketPrice, basketSize);
+  basketItem.append(
+    basketImg,
+    basketName,
+    basketPrice,
+    basketSize,
+    basketDeleteButton
+  );
   document.querySelector(".basket-container").append(basketItem);
+  id++;
 }
 basket.onclick = () => {
   let sum = 0;
@@ -117,3 +135,18 @@ if (localStorage.getItem("numsProduct") == undefined) {
   window.location.replace("/index.html");
 }
 console.log(window.location.pathname);
+document.addEventListener("click", (e) => {
+  let numOnBasket = localStorage.getItem("numsProduct");
+  const { target } = e;
+  let arr = numOnBasket.split(",");
+  if(target.id != ""){
+  document.querySelectorAll(".basket-item").forEach((item, i) => {
+    if (i == target.id) {
+      item.remove();
+    }
+  });}
+  const filteredArr = numOnBasket
+    .split(",")
+    .filter((n) => n != Number(arr[target.id]));
+  localStorage.setItem("numsProduct", filteredArr);
+});

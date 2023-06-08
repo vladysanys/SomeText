@@ -4,7 +4,7 @@ const basketTwo = document.querySelector(".basket-2");
 const basketBox = document.querySelector(".basket-box");
 let check = false;
 let arr = [];
-let gen = false;
+let gen = true;
 function createProduct(size, img, price, name) {
   const basketItem = document.createElement("div");
   const basketImg = document.createElement("img");
@@ -24,7 +24,7 @@ function createProduct(size, img, price, name) {
   document.querySelector(".basket-container").append(basketItem);
 }
 basket.onclick = () => {
-  let sum =0
+  let sum = 0;
   let numOnBasket = localStorage.getItem("numsProduct");
   document.querySelector(".basket-box").classList.toggle("basket-box_anim");
   document.querySelector(".burger-box").classList.remove("burger-box_anim");
@@ -34,12 +34,12 @@ basket.onclick = () => {
   if (numOnBasket) {
     document.querySelector(".basket-container").style.visibility = "visible";
     document.querySelector(".basket-box_err").textContent = "";
-    document.querySelector(".basket-box_cost").style.visibility = "visible"
+    document.querySelector(".basket-box_cost").style.visibility = "visible";
     document.querySelector(".basket-box_button").style.top = "800px";
   } else {
     document.querySelector(".basket-box_err").textContent =
       "КОРЗИНА ПУСТАЯ. ДОБАВЬТЕ ХОТЯ БЫ ОДИН ТОВАР В КОРЗИНУ";
-    document.querySelector(".basket-box_cost").style.visibility = "hidden"
+    document.querySelector(".basket-box_cost").style.visibility = "hidden";
     document.querySelector(".basket-box_button").style.top = "500px";
     document.querySelector(".basket-container").style.visibility = "hidden";
   }
@@ -48,8 +48,9 @@ basket.onclick = () => {
   });
 
   arr.forEach((item, i) => {
-    sum = sum += Number(imgItems[Number(item.number)].cost)
-        document.querySelector(".basket-box_cost").textContent = "sum: "+sum+".rub"
+    sum = sum += Number(imgItems[Number(item.number)].cost);
+    document.querySelector(".basket-box_cost").textContent =
+      "sum: " + sum + ".rub";
     createProduct(
       item.size,
       imgItems[Number(item.number)].mainImg,
@@ -59,7 +60,7 @@ basket.onclick = () => {
   });
 };
 basketTwo.onclick = () => {
-  let sum =0
+  let sum = 0;
   let numOnBasket = localStorage.getItem("numsProduct");
   document.querySelector(".basket-box").classList.toggle("basket-box_anim");
   document.querySelector(".burger-box").classList.remove("burger-box_anim");
@@ -69,12 +70,12 @@ basketTwo.onclick = () => {
   if (numOnBasket) {
     document.querySelector(".basket-container").style.visibility = "visible";
     document.querySelector(".basket-box_err").textContent = "";
-    document.querySelector(".basket-box_cost").style.visibility = "visible"
+    document.querySelector(".basket-box_cost").style.visibility = "visible";
     document.querySelector(".basket-box_button").style.top = "800px";
   } else {
     document.querySelector(".basket-box_err").textContent =
       "КОРЗИНА ПУСТАЯ. ДОБАВЬТЕ ХОТЯ БЫ ОДИН ТОВАР В КОРЗИНУ";
-    document.querySelector(".basket-box_cost").style.visibility = "hidden"
+    document.querySelector(".basket-box_cost").style.visibility = "hidden";
     document.querySelector(".basket-box_button").style.top = "500px";
     document.querySelector(".basket-container").style.visibility = "hidden";
   }
@@ -83,8 +84,9 @@ basketTwo.onclick = () => {
   });
 
   arr.forEach((item, i) => {
-    sum = sum += Number(imgItems[Number(item.number)].cost)
-        document.querySelector(".basket-box_cost").textContent = "sum: "+sum+".rub"
+    sum = sum += Number(imgItems[Number(item.number)].cost);
+    document.querySelector(".basket-box_cost").textContent =
+      "sum: " + sum + ".rub";
     createProduct(
       item.size,
       imgItems[Number(item.number)].mainImg,
@@ -105,3 +107,10 @@ document.addEventListener("click", (e) => {
     });
   }
 });
+function start() {
+  if (gen) {
+    localStorage.setItem("numsProduct", "");
+    gen = false
+  }
+}
+start();

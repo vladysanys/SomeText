@@ -17,11 +17,12 @@ localStorage.setItem("numOnBasket", false);
 localStorage.setItem("soket", "");
 let idImg = 0;
 let numsProduct = [];
+let sizesProduct = [];
 let sizeL = false;
 let sizeXL = false;
 let num = localStorage.getItem("numPage");
 cardsItems.forEach((item, i) => {
-  console.log(imgItems[num].nums[i]);
+  // console.log(imgItems[num].nums[i]);
   item
     .querySelector("img")
     .setAttribute("src", imgItems[imgItems[num].nums[i]].mainImg);
@@ -29,6 +30,10 @@ cardsItems.forEach((item, i) => {
     imgItems[imgItems[num].nums[i]].name;
   moreButtons[i].id = imgItems[num].nums[i];
 });
+function createLocaleProduct(num1,size) {
+  const obj = {number:num1,size:size}
+  localStorage.setItem(num1,JSON.stringify(obj))
+}
 mainImg.setAttribute("src", imgItems[num].miniImg[switchValue]);
 costName.textContent = imgItems[num].name;
 costSum.textContent = imgItems[num].cost + ".rub";
@@ -120,6 +125,8 @@ buttonSizeXl.onclick = () => {
     localStorage.setItem("numsProduct", filteredArr);
   }
 };
+// localStorage.setItem("sizesProduct","")
+// localStorage.setItem("numsProduct", "");
 document.querySelector(".cost-box_button-basket").onclick = () => {
   if ((sizeL && checkBasket) || (sizeXL && checkBasket)) {
     document.querySelector(".cost-box_button-basket").textContent = "ДОБАВЛЕНО";
@@ -134,18 +141,17 @@ document.querySelector(".cost-box_button-basket").onclick = () => {
         filteredArr.push(item);
       }
     });
-    console.log(soket);
+    console.log(filteredArr);
     localStorage.setItem("numsProduct", filteredArr);
+    if (sizeL) {
+      createLocaleProduct(num,"l")
+    } else if (sizeXL) {
+      createLocaleProduct(num,"xl")
+    }
   } else {
     numsProduct = [];
     let arr = localStorage.getItem("numsProduct");
-    let filteredArr = arr.split(",")
-    arr.split(",").forEach((item) => {
-      if (item == num) {
-        filteredArr = arr.split(",").splice(item,1);
-      }
-    });
-    console.log(filteredArr);
+    let filteredArr = arr.split(",").filter((n) => n !== num);
     localStorage.setItem("numsProduct", filteredArr);
     localStorage.setItem("numOnBasket", false);
     document.querySelector(".cost-box_button-basket").textContent =
@@ -154,7 +160,7 @@ document.querySelector(".cost-box_button-basket").onclick = () => {
   }
 };
 let checkItems = localStorage.getItem("numsProduct").split(",");
-console.log(checkItems);
+// console.log(checkItems);
 checkItems.forEach((item) => {
   if (item == num) {
     document.querySelector(".cost-box_button-basket").textContent = "ДОБАВЛЕНО";

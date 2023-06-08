@@ -80,6 +80,7 @@ html
     margin-left: 5px
     font-size: 24px
 .size
+  position: relative
   color: #3A3C44
   font-family: $main-font
   -webkit-text-stroke: 1.5px #FFFFFF
@@ -91,6 +92,22 @@ html
   border: 1px solid #000000
   background: #FFFFFF
   cursor: pointer
+  // transition: all 0.2s
+.size>span
+  position: relative
+  color: #000000
+  z-index: 3
+.size:after
+  position: absolute
+  height: 100%
+  content: ""
+  width: 0
+  background: #000000
+  left: 0
+  transition: all 0.2s
+  top: 0
+.size:hover:after
+  width: 100%
 .size_anim
   background: #000000
   color: #000000

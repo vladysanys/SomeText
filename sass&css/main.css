@@ -186,6 +186,17 @@ html {
   z-index: 6;
   transition: 0.2s;
 }
+.basket-box_cost {
+  position: absolute;
+  font-size: 26px;
+  width: 258px;
+  padding: 10px 10px;
+  -webkit-text-stroke: 1px #d8d8d8;
+  top: 707px;
+  left: 316px;
+  background: #d8d8d8;
+  border-radius: 5px;
+}
 .basket-box_name {
   text-align: end;
   font-size: 20px;
@@ -215,6 +226,49 @@ html {
 
 .basket-box_anim {
   right: 0;
+}
+
+.basket-container {
+  position: absolute;
+  width: 550px;
+  height: 567px;
+  background: #d8d8d8;
+  transform: translate(-50%, 0);
+  left: 50%;
+  top: 150px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.basket-item {
+  position: relative;
+  display: flex;
+  height: 91px;
+  width: 548px;
+  border: 1px solid #d8d8d8;
+  background: #FFFFFF;
+}
+.basket-item_img {
+  width: 91px;
+}
+.basket-item_name {
+  margin: 15px 0 0 20px;
+  -webkit-text-stroke: 1px #FFFFFF;
+  font-size: 20px;
+}
+.basket-item_price {
+  position: absolute;
+  -webkit-text-stroke: 0.7px #FFFFFF;
+  font-size: 18px;
+  margin-top: 65px;
+  left: 430px;
+}
+.basket-item_size {
+  position: absolute;
+  top: 60px;
+  -webkit-text-stroke: 0.5px #FFFFFF;
+  left: 112px;
+  font-size: 19px;
 }
 
 @media screen and (max-width: 1600px) {

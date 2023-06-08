@@ -13,10 +13,10 @@ function createProduct(size, img, price, name) {
   const basketSize = document.createElement("p");
   basketItem.classList.add("basket-item");
   basketImg.classList.add("basket-item_img");
-  if(window.location.pathname == "/SomeText/index.html"){
-    let pathImg = img.split("").splice(3,img.split("").length-2)
+  if (window.location.pathname.slice(0,-11) == "/index.html") {
+    let pathImg = img.split("").splice(3, img.split("").length - 2);
     basketImg.setAttribute("src", pathImg.join(""));
-  } else{
+  } else {
     basketImg.setAttribute("src", img);
   }
   basketName.classList.add("basket-item_name");
@@ -112,7 +112,8 @@ document.addEventListener("click", (e) => {
     });
   }
 });
-if(localStorage.getItem("numsProduct") == undefined){
-  localStorage.setItem("numsProduct","")
+if (localStorage.getItem("numsProduct") == undefined) {
+  localStorage.setItem("numsProduct", "");
+  window.location.replace("/index.html");
 }
 console.log(window.location.pathname);

@@ -13,7 +13,12 @@ function createProduct(size, img, price, name) {
   const basketSize = document.createElement("p");
   basketItem.classList.add("basket-item");
   basketImg.classList.add("basket-item_img");
-  basketImg.setAttribute("src", img);
+  if(window.location.pathname == "/index.html"){
+    let pathImg = img.split("").splice(3,img.split("").length-2)
+    basketImg.setAttribute("src", pathImg.join(""));
+  } else{
+    basketImg.setAttribute("src", img);
+  }
   basketName.classList.add("basket-item_name");
   basketName.textContent = name;
   basketPrice.classList.add("basket-item_price");
@@ -110,3 +115,4 @@ document.addEventListener("click", (e) => {
 if(localStorage.getItem("numsProduct") == undefined){
   localStorage.setItem("numsProduct","")
 }
+console.log(window.location.pathname);

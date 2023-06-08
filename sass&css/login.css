@@ -1,0 +1,95 @@
+.login-section {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 850px;
+  background: #FFFFFF;
+  top: 130px;
+  margin-bottom: 130px;
+}
+
+.box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #FFFFFF;
+}
+
+.card-box {
+  position: relative;
+  height: 512px;
+  width: 667px;
+  top: 90px;
+  left: 150px;
+}
+.card-box_title {
+  font-size: 38px;
+  width: 400px;
+  text-align: center;
+  margin-bottom: 25px;
+}
+.card-box_ligon {
+  font-size: 26px;
+  margin-left: 50px;
+}
+.card-box_ligon:hover {
+  border-bottom: 2px solid #000000;
+}
+
+.card-login {
+  position: absolute;
+  top: 178px;
+  width: 660px;
+}
+.card-login_email {
+  font-size: 24px;
+  margin-bottom: 10px;
+  margin-left: 15px;
+}
+.card-login_password {
+  margin-bottom: 10px;
+  font-size: 24px;
+  margin-left: 15px;
+}
+.card-login_input {
+  width: 99%;
+  height: 49px;
+  font-size: 28px;
+  border-radius: 30px;
+  border: 1px solid #000000;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+.card-login_button {
+  position: absolute;
+  transform: translate(-50%, 0);
+  left: 50%;
+  width: 340px;
+  height: 49px;
+  border: 2px solid #000000;
+  border-radius: 30px;
+}
+
+.card-signin {
+  position: absolute;
+  top: 178px;
+  visibility: hidden;
+  width: 660px;
+}
+
+.login {
+  width: 100px;
+}
+
+.anim {
+  border-bottom: 2px solid #000000;
+}
+
+.err-login {
+  position: absolute;
+  top: 5px;
+  left: 480px;
+  color: #ff0000;
+  font-size: 13px;
+  visibility: hidden;
+}/*# sourceMappingURL=login.css.map */

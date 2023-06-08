@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../sass&css/reset.css" />
     <link rel="stylesheet" href="../sass&css/main.css" />
+    <link rel="stylesheet" href="../sass&css/login.css" />
     <link
       rel="shortcut icon"
       href="../icons/document-icon.svg"
@@ -19,17 +20,31 @@
         <button class="header-box_doc button-setting burger-box_icon">
           <img src="../icons/document-icon.svg" alt="Документ" />
         </button>
-        <button class="header-box_basket button-setting burger-box_icon basket-1">
+        <button
+          class="header-box_basket button-setting burger-box_icon basket-1"
+        >
           <img src="../icons/basket-icon.svg" alt="Корзина" />
         </button>
         <button class="burger-box_icon-cross button-setting burger-box_icon">
-          <img src="../img/cross.svg" alt="">
+          <img src="../img/cross.svg" alt="" />
         </button>
         <div class="buttons-box">
-          <a class="item-button button-setting login" href="loginPage.html">ЛОГИН</a>
-          <a class="item-button button-setting shop" href="../index.html">МАГАЗИН</a>
-          <a class="item-button button-setting delivery" href="deliveryPage.html">ДОСТАВКА</a>
-          <a class="item-button button-setting contacts" href="contactsPage.html">КОНТАКТЫ</a>
+          <a class="item-button button-setting login" href="loginPage.html"
+            >ЛОГИН</a
+          >
+          <a class="item-button button-setting shop" href="../index.html"
+            >МАГАЗИН</a
+          >
+          <a
+            class="item-button button-setting delivery"
+            href="deliveryPage.html"
+            >ДОСТАВКА</a
+          >
+          <a
+            class="item-button button-setting contacts"
+            href="contactsPage.html"
+            >КОНТАКТЫ</a
+          >
         </div>
       </div>
       <button class="header-box_doc button-setting">
@@ -50,13 +65,41 @@
       <p class="basket-box_err">
         КОРЗИНА ПУСТАЯ. ДОБАВЬТЕ ХОТЯ БЫ ОДИН ТОВАР В КОРЗИНУ
       </p>
-      <div class="basket-container">
-      </div>
+      <div class="basket-container"></div>
       <p class="basket-box_cost">sum:123123.rub</p>
       <button class="basket-box_button button-setting">ОФОРМИТЬ ЗАКАЗ</button>
     </div>
     <div class="background"></div>
     <div class="background-basket"></div>
+    <section class="login-section">
+      <div class="box">
+        <div class="card-box">
+          <h1 class="card-box_title">Войдите или создайте аккаунт</h1>
+          <button class="card-box_ligon button-setting login-1">ВОЙТИ</button>
+          <button class="card-box_ligon button-setting signin">
+            СОЗДАТЬ АККАУНТ
+          </button>
+          <div class="card-login">
+            <p class="card-login_email">ПОЧТА</p>
+            <p class="err-login">НЕКОРРЕКТНЫЕ ДАННЫЕ</p>
+            <input type="text" placeholder="почта" class="card-login_input input-1" />
+            <p class="card-login_password">ПАРОЛЬ</p>
+            <input type="text" placeholder="пароль" class="card-login_input input-2" />
+            <button class="card-login_button button-setting login-button">ВОЙТИ</button>
+          </div>
+          <div class="card-signin">
+            <p class="card-login_email">ИМЯ</p>
+            <input type="text" placeholder="имя" class="card-login_input input-3" />
+            <p class="card-login_password">ПОЧТА</p>
+            <input type="text" placeholder="почта" class="card-login_input input-4" />
+            <p class="card-login_password">ПАРОЛЬ</p>
+            <input type="text" placeholder="пароль" class="card-login_input input-5" />
+            <button class="card-login_button button-setting signin-button">ВОЙТИ</button>
+          </div>
+        </div>
+      </div>
+      <img src="../img/loginImg.svg" alt="" class="login-img" />
+    </section>
     <footer class="footer-main">
       <button class="header-box_doc button-setting">
         <img src="../icons/document-icon.svg" alt="Документ" />
@@ -64,14 +107,20 @@
       <a class="header-box_title button-setting" href="../index.html">
         <h1>SOME TEXT</h1>
       </a>
-      <a class="header-box_vk button-setting" href="https://vk.com/r0bert705010">
+      <a
+        class="header-box_vk button-setting"
+        href="https://vk.com/r0bert705010"
+      >
         <img src="../icons/vk-icon.png" alt="Вконтакте" /></a
-      ><a class="header-box_tg button-setting" href="https://web.telegram.org/k/#1139534183">
+      ><a
+        class="header-box_tg button-setting"
+        href="https://web.telegram.org/k/#1139534183"
+      >
         <img src="../icons/tg-icon.png" alt="Телеграм" />
       </a>
     </footer>
-    <script src="../js/checkId.js"></script>
     <script src="../js/basket.js" type="module"></script>
+    <script src="../js/register.js"></script>
     <script src="../js/burger.js"></script>
   </body>
 </html>

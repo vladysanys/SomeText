@@ -47,7 +47,6 @@ function createProduct(size, img, price, name) {
   id++;
 }
 basket.onclick = () => {
-  let sum = 0;
   let numOnBasket = localStorage.getItem("numsProduct");
   document.querySelector(".basket-box").classList.toggle("basket-box_anim");
   document.querySelector(".burger-box").classList.remove("burger-box_anim");
@@ -66,24 +65,9 @@ basket.onclick = () => {
     document.querySelector(".basket-box_button").style.top = "500px";
     document.querySelector(".basket-container").style.visibility = "hidden";
   }
-  numOnBasket.split(",").forEach((item, i) => {
-    arr.push(JSON.parse(localStorage.getItem(item)));
-  });
-
-  arr.forEach((item, i) => {
-    sum = sum += Number(imgItems[Number(item.number)].cost);
-    document.querySelector(".basket-box_cost").textContent =
-      "sum: " + sum + ".rub";
-    createProduct(
-      item.size,
-      imgItems[Number(item.number)].mainImg,
-      imgItems[Number(item.number)].cost,
-      imgItems[Number(item.number)].name
-    );
-  });
+  startBasket();
 };
 basketTwo.onclick = () => {
-  let sum = 0;
   let numOnBasket = localStorage.getItem("numsProduct");
   document.querySelector(".basket-box").classList.toggle("basket-box_anim");
   document.querySelector(".burger-box").classList.remove("burger-box_anim");
@@ -102,21 +86,7 @@ basketTwo.onclick = () => {
     document.querySelector(".basket-box_button").style.top = "500px";
     document.querySelector(".basket-container").style.visibility = "hidden";
   }
-  numOnBasket.split(",").forEach((item, i) => {
-    arr.push(JSON.parse(localStorage.getItem(item)));
-  });
-
-  arr.forEach((item, i) => {
-    sum = sum += Number(imgItems[Number(item.number)].cost);
-    document.querySelector(".basket-box_cost").textContent =
-      "sum: " + sum + ".rub";
-    createProduct(
-      item.size,
-      imgItems[Number(item.number)].mainImg,
-      imgItems[Number(item.number)].cost,
-      imgItems[Number(item.number)].name
-    );
-  });
+  startBasket();
 };
 document.addEventListener("click", (e) => {
   arr = [];
@@ -128,6 +98,7 @@ document.addEventListener("click", (e) => {
     document.querySelectorAll(".basket-item").forEach((item) => {
       item.remove();
     });
+    window.location.reload()
   }
 });
 if (localStorage.getItem("numsProduct") == undefined) {
@@ -135,18 +106,53 @@ if (localStorage.getItem("numsProduct") == undefined) {
   window.location.replace("/index.html");
 }
 console.log(window.location.pathname);
-document.addEventListener("click", (e) => {
+document.querySelector(".basket-container").addEventListener("click", (e) => {
   let numOnBasket = localStorage.getItem("numsProduct");
   const { target } = e;
   let arr = numOnBasket.split(",");
-  if(target.id != ""){
-  document.querySelectorAll(".basket-item").forEach((item, i) => {
-    if (i == target.id) {
+  if (target.id != "") {
+    document.querySelectorAll(".basket-item").forEach((item, i) => {
       item.remove();
+    });
+    const filteredArr = numOnBasket
+      .split(",")
+      .filter((n) => n != Number(arr[target.id]));
+    localStorage.setItem("numsProduct", filteredArr);
+    startBasket();
+    if (filteredArr.length == 0) {
+      document.querySelector(".basket-box_err").textContent =
+        "КОРЗИНА ПУСТАЯ. ДОБАВЬТЕ ХОТЯ БЫ ОДИН ТОВАР В КОРЗИНУ";
+      document.querySelector(".basket-box_cost").style.visibility = "hidden";
+      document.querySelector(".basket-box_button").style.top = "500px";
+      document.querySelector(".basket-container").style.visibility = "hidden";
     }
-  });}
-  const filteredArr = numOnBasket
-    .split(",")
-    .filter((n) => n != Number(arr[target.id]));
-  localStorage.setItem("numsProduct", filteredArr);
+  }
 });
+function startBasket() {
+  let sum = 0;
+  let numOnBasket = localStorage.getItem("numsProduct");
+  numOnBasket.split(",").forEach((item, i) => {
+    arr.push(JSON.parse(localStorage.getItem(item)));
+  });
+  arr.forEach((item, i) => {
+    if (arr[i] == null) {
+    } else {
+      if (arr.length == 0) {
+        sum = 0;
+      } else {
+          createProduct(
+            item.size,
+            imgItems[Number(item.number)].mainImg,
+            imgItems[Number(item.number)].cost,
+            imgItems[Number(item.number)].name
+          );
+          sum = sum += Number(imgItems[Number(item.number)].cost);
+      }
+    }
+    document.querySelector(".basket-box_cost").textContent =
+      "sum: " + sum + ".rub";
+    if (i == arr.length - 1) {
+      id = 0;
+    }
+  });
+}

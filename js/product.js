@@ -141,7 +141,6 @@ document.querySelector(".cost-box_button-basket").onclick = () => {
         filteredArr.push(item);
       }
     });
-    console.log(filteredArr);
     localStorage.setItem("numsProduct", filteredArr);
     if (sizeL) {
       createLocaleProduct(num,"l")

@@ -7,27 +7,78 @@ const inputFour = document.querySelector(".input-4");
 const inputFive = document.querySelector(".input-5");
 const loginButtonMain = document.querySelector(".login-button");
 const signinButtonMain = document.querySelector(".signin-button");
+async function getData() {
+  try {
+    const response = await fetch(
+      "https://giving-oriole-32739.kv.vercel-storage.com/get/users",
+      {
+        headers: {
+          Authorization:
+            "Bearer AX_jASQgNWUwNGY4N2ItZDNhZS00OTAzLTkxOTQtNGYzNWRhZTMyM2Y0ZDY0MjBkZDdmMDBiNDRlOTlkMWVjNjM1MTkzM2Q2YWI=",
+        },
+      }
+    );
+    const data = await response.json();
+    if (data) {
+      const data1 = data;
+      return data1;
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+const result = await getData();
+const parseData = JSON.parse(result.result);
+const { users } = parseData;
+async function saveData() {
+  const result = await getData();
+  const parseData = JSON.parse(result.result);
+  const { users } = parseData;
+  console.log(users);
+}
+
+let newUsers = [];
+const sendingData = () => {
+  fetch(`https://giving-oriole-32739.kv.vercel-storage.com/set/users`, {
+    headers: {
+      Authorization: `Bearer AX_jASQgNWUwNGY4N2ItZDNhZS00OTAzLTkxOTQtNGYzNWRhZTMyM2Y0ZDY0MjBkZDdmMDBiNDRlOTlkMWVjNjM1MTkzM2Q2YWI=`,
+    },
+    body: JSON.stringify({
+      users: newUsers,
+    }),
+    method: "POST",
+  })
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+};
 function createObj(login, password, name) {
+  let check = true;
+  saveData();
   const obj = {
     name: name,
     login: login,
     password: password,
+    size: localStorage.getItem("numsProduct"),
   };
-  console.log(obj);
+  users.forEach((item) => {
+    if (item.login == login) {
+      console.log("err");
+      check = false;
+    }
+  });
+  if (check) {
+    console.log(666);
+    newUsers = [...users, obj];
+    sendingData();
+  }
+  console.log(newUsers);
 }
 let err = true;
-// function alphabetCheck(word) {
-//   console.log(word.split(""));
-//   let alphabet = "abcdefghijklmnopkrstuvwxyzABCDEFGHIJKLMNOPKRSTUVWXYZ";
-//   alphabet.split("").forEach((item) => {
-//     for (let i = 0; i < word.split("").length; i++) {
-//       if (item != word.split("")[i]) {
-//         err = false;
-//         console.log(123);
-//       }
-//     }
-//   });
-// }
+let check = false;
+function alphabetCheck(str) {
+  let match = /^[a-zA-Z\d\s!"#$%&'()*+,-.\/:;<=>?@[\]^_`{|}~]+$/i.test(str);
+  return match;
+}
 loginButton.classList.add("anim");
 loginButton.onclick = () => {
   loginButton.classList.add("anim");
@@ -43,67 +94,97 @@ signButton.onclick = () => {
   document.querySelector(".card-signin").style.visibility = "visible";
   document.querySelector(".err-login").style.visibility = "hidden";
 };
-loginButtonMain.onclick = () => {
-  let login;
-  let valid;
-  inputOne.value.split("").forEach((item) => {
-    if (item == "@") {
-      valid = true;
-    }
-  });
-  if (inputTwo.value.length > 8) {
-    document.querySelector(".err-login").style.visibility = "hidden";
-    let arr = inputTwo.value.split("");
-    if (arr[0] == arr[0].toUpperCase) {
-      console.log(123);
-    }
-  } else {
-    valid = false;
-  }
-  if (valid) {
-    login = inputOne.value;
-    document.querySelector(".err-login").style.visibility = "hidden";
-    console.log(123);
-  } else {
-    document.querySelector(".err-login").style.visibility = "visible";
-  }
+loginButtonMain.onclick = async () => {
   let password = inputTwo.value;
-};
-signinButtonMain.onclick = () => {
-  let login;
-  let valid;
-  let name;
-  let password;
-  inputFour.value.split("").forEach((item) => {
-    if (item == "@") {
-      valid = true;
+  let login = inputOne.value;
+  async function getData() {
+    try {
+      const response = await fetch(
+        "https://giving-oriole-32739.kv.vercel-storage.com/get/users",
+        {
+          headers: {
+            Authorization:
+              "Bearer AX_jASQgNWUwNGY4N2ItZDNhZS00OTAzLTkxOTQtNGYzNWRhZTMyM2Y0ZDY0MjBkZDdmMDBiNDRlOTlkMWVjNjM1MTkzM2Q2YWI=",
+          },
+        }
+      );
+      const data = await response.json();
+      if (data) {
+        const data1 = data;
+        return data1;
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  // const result = await getData();
+  const result = await getData();
+  const parseData = JSON.parse(result.result);
+  const { users } = parseData;
+  let check = false;
+  let num = 0
+  users.forEach((item,i) => {
+    if (item.login == login && item.password == password) {
+      check = true;
+      num = i
     }
   });
-  if (inputThree.value.length > 4) {
-    document.querySelector(".err-login").style.visibility = "hidden";
-    name = inputThree.value;
-  } else {
-    valid = false;
-  }
-  if (inputFive.value.length > 8) {
-    let arr = inputFive.value.split("");
-    if (arr[0] == arr[0].toUpperCase()) {
-      document.querySelector(".err-login").style.visibility = "hidden";
-      password = inputFive.value
-    }
-  } else {
-    let arr = inputFive.value.split("");
-    valid = false;
-  }
-  if (valid && err) {
-    login = inputFour.value;
+  if (check) {
+    console.log("Вы успешно зашли!");
+    localStorage.setItem("numsProduct",users[num].size)
+    // console.log(users[num].name);\
+    console.log(num);
     document.querySelector(".err-login").style.visibility = "hidden";
   } else {
     document.querySelector(".err-login").style.visibility = "visible";
   }
-  // alphabetCheck(login);
-  // alphabetCheck(password);
-  if (err) {
+};
+console.log(users);
+signinButtonMain.onclick = () => {
+  let checkLogin = false;
+  let checkPass = false;
+  let login = inputFour.value;
+  let valid;
+  let name = inputThree.value;
+  let password = inputFive.value;
+  let check = false;
+  if (
+    login.length > 9 &&
+    login.length < 22 &&
+    password.length > 7 &&
+    password.length < 22 &&
+    name.length > 5 &&
+    name.length < 20
+  ) {
+    if (alphabetCheck(login)) {
+      login.split("").forEach((item) => {
+        if (item == "@") {
+          checkLogin = true;
+        }
+      });
+    } else {
+      check = true;
+    }
+    if (alphabetCheck(password)) {
+      let arr = password.split("");
+      if (arr[0] == arr[0].toUpperCase()) {
+        checkPass = true;
+      }
+    } else {
+      check = true;
+    }
+  } else {
+    check = true;
+  }
+  if (checkLogin && checkPass) {
+    check = false;
+  } else {
+    check = true;
+  }
+  if (check) {
+    document.querySelector(".err-login").style.visibility = "visible";
+  } else {
+    document.querySelector(".err-login").style.visibility = "hidden";
     createObj(login, password, name);
   }
 };

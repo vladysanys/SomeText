@@ -190,11 +190,11 @@ html {
 .basket-box_cost {
   position: absolute;
   font-size: 26px;
-  width: 258px;
+  width: 305px;
   padding: 10px 10px;
   -webkit-text-stroke: 1px #FFFFFF;
-  top: 707px;
-  left: 346px;
+  top: 710px;
+  left: 316px;
   border-radius: 5px;
 }
 .basket-box_name {

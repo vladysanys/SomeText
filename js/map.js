@@ -9,13 +9,6 @@ ymaps.ready(function () {
   let control = myMap.controls.get('routePanelControl');
   let city = 'Санкт-Петербург';
 
-  // let location = ymaps.geolocation.get();
-
-  // location.then(function(res) {
-  // 	let locationText = res.geoObjects.get(0).properties.get('text');
-  // 	console.log(locationText)
-  // });
-
   const options = {
     enableHighAccuracy: true,
     timeout: 5000,

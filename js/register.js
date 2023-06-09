@@ -39,7 +39,6 @@ async function saveData() {
   const result = await getData();
   const parseData = JSON.parse(result.result);
   const { users } = parseData;
-  console.log(users);
 }
 
 let newUsers = [];
@@ -72,7 +71,6 @@ function createObj(login, password, name) {
     }
   });
   if (check) {
-    console.log(666);
     newUsers = [...users, obj];
     document.querySelector(".err-login").style.visibility = "hidden";
     sendingData();
@@ -82,7 +80,6 @@ function createObj(login, password, name) {
   } else {
     document.querySelector(".err-login").style.visibility = "visible";
   }
-  console.log(newUsers);
 }
 let err = true;
 let check = false;
@@ -143,18 +140,14 @@ loginButtonMain.onclick = async () => {
     }
   });
   if (check) {
-    console.log("Вы успешно зашли!");
     localStorage.setItem("numsProduct",users[num].size)
     toastBootstrap.show()
     localStorage.setItem("registered",true)
-    // console.log(users[num].name);\
-    console.log(num);
     document.querySelector(".err-login").style.visibility = "hidden";
   } else {
     document.querySelector(".err-login").style.visibility = "visible";
   }
 };
-console.log(users);
 signinButtonMain.onclick = () => {
   let checkLogin = false;
   let checkPass = false;

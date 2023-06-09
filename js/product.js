@@ -22,7 +22,6 @@ let sizeL = false;
 let sizeXL = false;
 let num = localStorage.getItem("numPage");
 cardsItems.forEach((item, i) => {
-  // console.log(imgItems[num].nums[i]);
   item
     .querySelector("img")
     .setAttribute("src", imgItems[imgItems[num].nums[i]].mainImg);
@@ -97,7 +96,6 @@ buttonSizeL.onclick = () => {
     let arr = localStorage.getItem("numsProduct");
     let filteredArr = arr.split(",");
     filteredArr.pop();
-    console.log(filteredArr);
     localStorage.setItem("numsProduct", filteredArr);
   }
 };
@@ -121,7 +119,6 @@ buttonSizeXl.onclick = () => {
     let arr = localStorage.getItem("numsProduct");
     let filteredArr = arr.split(",");
     filteredArr.pop();
-    console.log(filteredArr);
     localStorage.setItem("numsProduct", filteredArr);
   }
 };
@@ -159,7 +156,6 @@ document.querySelector(".cost-box_button-basket").onclick = () => {
   }
 };
 let checkItems = localStorage.getItem("numsProduct").split(",");
-// console.log(checkItems);
 checkItems.forEach((item) => {
   if (item == num) {
     document.querySelector(".cost-box_button-basket").textContent = "ДОБАВЛЕНО";

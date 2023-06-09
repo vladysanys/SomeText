@@ -3,6 +3,12 @@ const basket = document.querySelector(".basket-1");
 const basketTwo = document.querySelector(".basket-2");
 const basketBox = document.querySelector(".basket-box");
 const deleteButton = document.querySelectorAll(".icon-delete");
+const buttonBuy = document.querySelector(".basket-box_button");
+const toastTrigger = document.getElementById("liveToastBtn");
+const toastLiveExample = document.getElementById("liveToast");
+const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 let check = false;
 let arr = [];
 let gen = true;
@@ -92,20 +98,20 @@ document.addEventListener("click", (e) => {
   arr = [];
   const { target } = e;
   if (target.className == "background-basket") {
-    document.querySelector(".basket-box").classList.toggle("basket-box_anim");
+    document.querySelector(".basket-box").classList.remove("basket-box_anim");
     check = false;
     document.querySelector(".background-basket").style.visibility = "hidden";
     document.querySelectorAll(".basket-item").forEach((item) => {
       item.remove();
     });
-    window.location.reload()
+    window.location.reload();
+    document.querySelector(".pay-box").style.visibility = "hidden";
   }
 });
 if (localStorage.getItem("numsProduct") == undefined) {
   localStorage.setItem("numsProduct", "");
   window.location.replace("/index.html");
 }
-console.log(window.location.pathname);
 document.querySelector(".basket-container").addEventListener("click", (e) => {
   let numOnBasket = localStorage.getItem("numsProduct");
   const { target } = e;
@@ -140,13 +146,13 @@ function startBasket() {
       if (arr.length == 0) {
         sum = 0;
       } else {
-          createProduct(
-            item.size,
-            imgItems[Number(item.number)].mainImg,
-            imgItems[Number(item.number)].cost,
-            imgItems[Number(item.number)].name
-          );
-          sum = sum += Number(imgItems[Number(item.number)].cost);
+        createProduct(
+          item.size,
+          imgItems[Number(item.number)].mainImg,
+          imgItems[Number(item.number)].cost,
+          imgItems[Number(item.number)].name
+        );
+        sum = sum += Number(imgItems[Number(item.number)].cost);
       }
     }
     document.querySelector(".basket-box_cost").textContent =
@@ -156,3 +162,109 @@ function startBasket() {
     }
   });
 }
+buttonBuy.onclick = () => {
+  let sum = 0;
+  let numOnBasket = localStorage.getItem("numsProduct");
+  numOnBasket.split(",").forEach((item, i) => {
+    arr.push(JSON.parse(localStorage.getItem(item)));
+  });
+  arr.forEach((item, i) => {
+    if (arr[i] == null) {
+    } else {
+      if (arr.length == 0) {
+        sum = 0;
+      } else {
+        sum = sum += Number(imgItems[Number(item.number)].cost);
+      }
+    }
+    document.querySelector(".pay-button").textContent = "PAY " + sum + ".rub";
+    if (i == arr.length - 1) {
+      id = 0;
+    }
+  });
+  const items = document
+    .querySelector(".basket-container")
+    .querySelectorAll(".basket-item");
+  if (items.length == 0) {
+  } else {
+    document.querySelector(".basket-box").classList.remove("basket-box_anim");
+    document.querySelector(".pay-box").style.visibility = "visible";
+  }
+};
+let arrNumbersCart;
+document
+  .querySelector(".pay-box_card-text_input")
+  .addEventListener("input", (e) => {
+    let newArr = [];
+    arrNumbersCart = e.target.value.split("");
+    if (arrNumbersCart.length == 4) {
+      document.querySelector(".pay-box_card-text_input").value =
+        arrNumbersCart.join("") + "   ";
+    } else if (arrNumbersCart.length == 11) {
+      document.querySelector(".pay-box_card-text_input").value =
+        arrNumbersCart.join("") + "   ";
+    } else if (arrNumbersCart.length == 18) {
+      document.querySelector(".pay-box_card-text_input").value =
+        arrNumbersCart.join("") + "   ";
+    }
+    arrNumbersCart.forEach((item) => {
+      if (item === 1) {
+        newArr.push(item);
+      }
+    });
+    if (arrNumbersCart.length == 20) {
+      for (let i = 0; i < 3; i++) {
+        arrNumbersCart.pop();
+      }
+      document.querySelector(".pay-box_card-text_input").value =
+        arrNumbersCart.join("");
+    } else if (arrNumbersCart.length == 13) {
+      for (let i = 0; i < 3; i++) {
+        arrNumbersCart.pop();
+      }
+      document.querySelector(".pay-box_card-text_input").value =
+        arrNumbersCart.join("");
+    } else if (arrNumbersCart.length == 6) {
+      for (let i = 0; i < 3; i++) {
+        arrNumbersCart.pop();
+      }
+      document.querySelector(".pay-box_card-text_input").value =
+        arrNumbersCart.join("");
+    }
+  });
+document.querySelector(".pay-box_card-name_input").addEventListener("input",(e)=>{
+  document.querySelector(".pay-box_card-name_input").value = e.target.value.toUpperCase()
+})
+document.querySelector(".pay-box_address").addEventListener("input",(e)=>{
+  document.querySelector(".pay-box_address").value = e.target.value.toUpperCase()
+})
+document.querySelector(".pay-button").onclick = () => {
+  let check = true
+  if (document.querySelector(".pay-box_card-text_input").value.length == 25) {
+  } else {
+    check = false
+  }
+  if (document.querySelector(".pay-box_card-cvc_input").value.length == 3) {
+  } else {
+    check = false
+  }
+  if (document.querySelector(".pay-box_card-name_input").value.length > 10) {
+  } else {
+    check = false
+  }
+  if (document.querySelector(".pay-box_address").value.length > 10) {
+  } else {
+    check = false
+  }
+  if (document.querySelector(".pay-box_card-date-select-3").value.length == 2) {
+  } else {
+    check = false
+  }
+  if (check) {
+    document.querySelector(".toast-body").textContent = "Вы успешно оформили заказ! Спасибо за покупку"
+    localStorage.setItem("numsProduct","")
+    document.querySelector(".pay-box").style.visibility = "hidden";
+    document.querySelector(".background-basket").style.visibility = "hidden";
+    toastBootstrap.show()
+  }
+};

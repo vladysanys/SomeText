@@ -225,6 +225,121 @@ html
   position: absolute
   height: 40px
   left: 500px
+.pay-box
+  position: fixed
+  display: flex
+  top: 150px
+  width: 500px
+  height: 550px
+  transform: translateX(-50%)
+  left: 50%
+  background: #FFFFFF
+  z-index: 5
+  border: 1px solid #d8d8d8
+  border-radius: 10px
+  visibility: hidden
+  &_title
+    position: absolute
+    top: 30px
+    text-align: center
+    font-size: 28px
+    transform: translateX(-50%)
+    left: 50%
+    -webkit-text-stroke: 1.5px #FFFFFF
+  &_card-text
+    position: absolute
+    font-size: 18px
+    -webkit-text-stroke: 0.5px #FFFFFF
+  &_card-text_input
+    position: absolute
+    top: 20px
+    width: 300px
+    height: 50px
+    padding-left: 11px
+  &_card-cvc
+    -webkit-text-stroke: 0.5px #FFFFFF
+    position: absolute
+    font-size: 18px
+    right: 40px
+  &_card-cvc_input
+    position: absolute
+    top: 20px
+    width: 80px
+    height: 50px
+    right: 0px
+    padding-left: 15px
+  &_card-name
+    position: absolute
+    font-size: 18px
+    -webkit-text-stroke: 0.5px #FFFFFF
+    top: 80px
+  &_card-name_input
+    position: absolute
+    top: 110px
+    width: 100%
+    height: 50px
+  &_card-date
+    position: absolute
+    font-size: 18px
+    -webkit-text-stroke: 0.5px #FFFFFF
+    top: 170px
+  &_card-date-select-1
+    position: absolute
+    width: 70px
+    top: 200px
+    -webkit-text-stroke: 0.5px #FFFFFF
+    height: 50px
+  &_card-date-select-2
+    position: absolute
+    width: 210px
+    top: 200px
+    height: 50px
+    left: 90px
+    -webkit-text-stroke: 0.5px #FFFFFF
+  &_card-date-select-3
+    position: absolute
+    width: 80px
+    top: 200px
+    height: 50px
+    right: 0
+    padding-left: 15px
+  &_address
+    position: absolute
+    font-size: 18px
+    top: 280px
+    height: 50px
+    width: 100%
+    padding-left: 10px
+  &_address-text
+    position: absolute
+    top: 260px
+    font-size: 18px
+    -webkit-text-stroke: 0.5px #FFFFFF
+.map
+  position: absolute
+  top: 270px
+  border-radius: 5px
+  width: 400px
+  height: 250px
+.pay-button
+  position: absolute
+  top: 350px
+  width: 400px
+  -webkit-text-stroke: 0.5px #000000
+  height: 50px
+  background: #000000
+  color: #FFFFFF
+  border: none
+  cursor: pointer
+.select-2_item
+  -webkit-text-stroke: 0.5px #FFFFFF
+.pay-container
+  position: absolute
+  // border: 1px solid #000
+  width: 80%
+  top: 80px
+  transform: translateX(-50%)
+  left: 50%
 @media screen and ( max-width: 1600px )
   .header-box
     &_basket

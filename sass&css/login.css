@@ -63,6 +63,7 @@
 .card-login_button {
   position: absolute;
   transform: translate(-50%, 0);
+  top: 250px;
   left: 50%;
   width: 340px;
   height: 49px;
@@ -92,4 +93,14 @@
   color: #ff0000;
   font-size: 13px;
   visibility: hidden;
+}
+
+.signin-button {
+  top: 350px;
+}
+
+.toast-container {
+  transform: translateX(-50%);
+  left: 50%;
+  top: 20px;
 }/*# sourceMappingURL=login.css.map */

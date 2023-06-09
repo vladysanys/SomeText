@@ -7,6 +7,11 @@ const inputFour = document.querySelector(".input-4");
 const inputFive = document.querySelector(".input-5");
 const loginButtonMain = document.querySelector(".login-button");
 const signinButtonMain = document.querySelector(".signin-button");
+const toastTrigger = document.getElementById("liveToastBtn");
+const toastLiveExample = document.getElementById("liveToast");
+const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
 async function getData() {
   try {
     const response = await fetch(
@@ -69,7 +74,13 @@ function createObj(login, password, name) {
   if (check) {
     console.log(666);
     newUsers = [...users, obj];
+    document.querySelector(".err-login").style.visibility = "hidden";
     sendingData();
+    document.querySelector(".toast-body").textContent ="Вы были успешно зарегистрированы!"
+    toastBootstrap.show()
+    localStorage.setItem("registered",true)
+  } else {
+    document.querySelector(".err-login").style.visibility = "visible";
   }
   console.log(newUsers);
 }
@@ -86,6 +97,7 @@ loginButton.onclick = () => {
   document.querySelector(".card-signin").style.visibility = "hidden";
   document.querySelector(".card-login").style.visibility = "visible";
   document.querySelector(".err-login").style.visibility = "hidden";
+  document.querySelector(".login-img").setAttribute("src","../img/loginImg.svg")
 };
 signButton.onclick = () => {
   loginButton.classList.remove("anim");
@@ -93,6 +105,7 @@ signButton.onclick = () => {
   document.querySelector(".card-login").style.visibility = "hidden";
   document.querySelector(".card-signin").style.visibility = "visible";
   document.querySelector(".err-login").style.visibility = "hidden";
+  document.querySelector(".login-img").setAttribute("src","../img/signin-2.png")
 };
 loginButtonMain.onclick = async () => {
   let password = inputTwo.value;
@@ -132,6 +145,8 @@ loginButtonMain.onclick = async () => {
   if (check) {
     console.log("Вы успешно зашли!");
     localStorage.setItem("numsProduct",users[num].size)
+    toastBootstrap.show()
+    localStorage.setItem("registered",true)
     // console.log(users[num].name);\
     console.log(num);
     document.querySelector(".err-login").style.visibility = "hidden";

@@ -29,9 +29,9 @@ cardsItems.forEach((item, i) => {
     imgItems[imgItems[num].nums[i]].name;
   moreButtons[i].id = imgItems[num].nums[i];
 });
-function createLocaleProduct(num1,size) {
-  const obj = {number:num1,size:size}
-  localStorage.setItem(num1,JSON.stringify(obj))
+function createLocaleProduct(num1, size) {
+  const obj = { number: num1, size: size };
+  localStorage.setItem(num1, JSON.stringify(obj));
 }
 mainImg.setAttribute("src", imgItems[num].miniImg[switchValue]);
 costName.textContent = imgItems[num].name;
@@ -122,8 +122,6 @@ buttonSizeXl.onclick = () => {
     localStorage.setItem("numsProduct", filteredArr);
   }
 };
-// localStorage.setItem("sizesProduct","")
-// localStorage.setItem("numsProduct", "");
 document.querySelector(".cost-box_button-basket").onclick = () => {
   if ((sizeL && checkBasket) || (sizeXL && checkBasket)) {
     document.querySelector(".cost-box_button-basket").textContent = "ДОБАВЛЕНО";
@@ -138,11 +136,14 @@ document.querySelector(".cost-box_button-basket").onclick = () => {
         filteredArr.push(item);
       }
     });
-    localStorage.setItem("numsProduct", filteredArr);
+    let sortedArr = filteredArr.filter(
+      (item, index, arr) => index === arr.indexOf(item)
+    );
+    localStorage.setItem("numsProduct", sortedArr);
     if (sizeL) {
-      createLocaleProduct(num,"l")
+      createLocaleProduct(num, "l");
     } else if (sizeXL) {
-      createLocaleProduct(num,"xl")
+      createLocaleProduct(num, "xl");
     }
   } else {
     numsProduct = [];
@@ -150,6 +151,8 @@ document.querySelector(".cost-box_button-basket").onclick = () => {
     let filteredArr = arr.split(",").filter((n) => n !== num);
     localStorage.setItem("numsProduct", filteredArr);
     localStorage.setItem("numOnBasket", false);
+    buttonSizeL.classList.remove("size_anim");
+    buttonSizeXl.classList.remove("size_anim");
     document.querySelector(".cost-box_button-basket").textContent =
       "ДОБАВИТЬ В КОРЗИНУ";
     checkBasket = !checkBasket;
@@ -162,3 +165,41 @@ checkItems.forEach((item) => {
     checkBasket = !checkBasket;
   }
 });
+document.querySelector(".background-basket").onclick = () => {
+  setTimeout(() => {
+    if (
+      localStorage.getItem("numPage") == localStorage.getItem("deletedItemNum")
+    ) {
+      localStorage.setItem("deletedItemNum", "");
+      sizeXL = false;
+      sizeL = false;
+      buttonSizeL.classList.remove("size_anim");
+      buttonSizeXl.classList.remove("size_anim");
+      checkBasket = false;
+      document.querySelector(".cost-box_button-basket").textContent =
+        "ДОБАВИТЬ В КОРЗИНУ";
+      localStorage.setItem("numOnBasket", false);
+    }
+  }, 15);
+};
+function sizeSetting() {
+  let check = false;
+  let item1;
+  let arr = localStorage.getItem("numsProduct");
+  let filteredArr = arr.split(",");
+  console.log(filteredArr);
+  filteredArr.forEach((item) => {
+    if (localStorage.getItem("deleteItem") == item) {
+      check = true;
+      item1 = item;
+    }
+  });
+  if (check) {
+    if (JSON.parse(localStorage.getItem(item1)).size == "xl") {
+      buttonSizeXl.classList.add("size_anim");
+    } else if (JSON.parse(localStorage.getItem(item1)).size == "l") {
+      buttonSizeL.classList.add("size_anim");
+    }
+  }
+}
+sizeSetting();

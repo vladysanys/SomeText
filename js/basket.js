@@ -104,7 +104,7 @@ document.addEventListener("click", (e) => {
     document.querySelectorAll(".basket-item").forEach((item) => {
       item.remove();
     });
-    window.location.reload();
+    // window.location.reload();
     document.querySelector(".pay-box").style.visibility = "hidden";
   }
 });
@@ -120,6 +120,7 @@ document.querySelector(".basket-container").addEventListener("click", (e) => {
     document.querySelectorAll(".basket-item").forEach((item, i) => {
       item.remove();
     });
+    localStorage.setItem("deletedItemNum",arr[target.id])
     const filteredArr = numOnBasket
       .split(",")
       .filter((n) => n != Number(arr[target.id]));
@@ -268,3 +269,7 @@ document.querySelector(".pay-button").onclick = () => {
     toastBootstrap.show()
   }
 };
+document.querySelector(".header-box_title").addEventListener("click",(e)=>{
+  const { target } = e;
+  localStorage.setItem("deleteItem","")
+})
